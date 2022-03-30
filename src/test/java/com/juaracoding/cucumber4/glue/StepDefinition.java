@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.juaracoding.cucumber4.config.AutomationFrameworkConfig;
 import com.juaracoding.cucumber4.drivers.DriverSingleton;
 import com.juaracoding.cucumber4.pages.BookingPage;
-import com.juaracoding.cucumber4.pages.LoginPage;
+//import com.juaracoding.cucumber4.pages.LoginPage;
 import com.juaracoding.cucumber4.utlis.ConfigurationProperties;
 import com.juaracoding.cucumber4.utlis.Constants;
 import com.juaracoding.cucumber4.utlis.TestCases;
@@ -32,7 +32,7 @@ import io.cucumber.spring.CucumberContextConfiguration;
 public class StepDefinition {
 
 	private static WebDriver driver;
-	private LoginPage loginPage;
+//	private LoginPage loginPage;
 	private BookingPage bookingPage;
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReport.html");
@@ -43,7 +43,7 @@ public class StepDefinition {
 	@Before
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
-		loginPage = new LoginPage();
+//		loginPage = new LoginPage();
 		bookingPage = new BookingPage();
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
@@ -71,7 +71,7 @@ public class StepDefinition {
 	@When("Customer klik login button")
 	public void customer_klik_login_button() {
 		scroll();
-		loginPage.submitLogin(configurationProperties.getEmail(), configurationProperties.getPassword());
+//		loginPage.submitLogin(configurationProperties.getEmail(), configurationProperties.getPassword());
 		extentTest.log(LogStatus.PASS, "Customer klik login button");
 	}
 	
@@ -80,7 +80,7 @@ public class StepDefinition {
 		//refresh
 		driver.navigate().refresh();
 		tunggu();
-		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
+//		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 		extentTest.log(LogStatus.PASS, "Customer berhasil login");
 	}
 	
