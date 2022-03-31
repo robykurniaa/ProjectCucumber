@@ -2,6 +2,8 @@ package com.juaracoding.cucumber4.glue;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +55,7 @@ public class StepDefinition {
 	}
 	
 	@AfterStep
-	public void  getResult(Scenario  scenario) {
+	public void  getResult(Scenario  scenario) throws Exception {
 		if(scenario.isFailed()) {
 			String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ", "_"));
 			extentTest.log(LogStatus.FAIL, "Screenshot:/n"+

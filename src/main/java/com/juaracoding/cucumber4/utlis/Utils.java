@@ -15,7 +15,7 @@ public class Utils {
 
 	public static int testCount = 0;
 	
-	public static String getScrennshoot(WebDriver driver, String screenshotName) throws IOException {
+	public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException {
 		String datename = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 		
 		TakesScreenshot ts = (TakesScreenshot) driver;
