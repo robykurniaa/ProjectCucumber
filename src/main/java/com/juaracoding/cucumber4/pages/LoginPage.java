@@ -15,25 +15,30 @@ private WebDriver driver;
 		this.driver = DriverSingleton.getDriver();
 		PageFactory.initElements(driver, this);
 	}
+	
 	@FindBy(name = "email")
 	WebElement inputEmail;
 	
 	@FindBy(name = "password")
-	WebElement inputPassword;
+	WebElement inputPassword;	
 	
-	@FindBy(css = "#fadein > div.container > div > div.modal-content.col.align-self-center > div.modal-body > div > form > div.btn-box.pt-3.pb-4 > button")
-	WebElement btnSubmit;
-
-	@FindBy(className = "author_meta")
+	@FindBy(css = "#fadein > div.container > div > div.modal-content.col.align-self-center > div.modal-body > div > form > div.btn-box.pt-3.pb-4 > button > span.ladda-label")
+	WebElement btnLogin;
+	
+	@FindBy(id = "cookie_stop")
+	WebElement btnGotIt;
+	
+	@FindBy(className = "author__meta")
 	WebElement txtWelcome;
 	
 	public void submitLogin(String email, String password) {
+		btnGotIt.click();
 		inputEmail.sendKeys(email);
 		inputPassword.sendKeys(password);
-		btnSubmit.click();
+		btnLogin.click();
 	}
 	
-	public String getTextWelcome() {
+	public String getTxtWelcome() {
 		return txtWelcome.getText();
 	}
 

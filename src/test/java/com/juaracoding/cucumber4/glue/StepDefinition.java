@@ -93,7 +93,7 @@ public class StepDefinition {
 		
 		driver.navigate().refresh();
 		tunggu();
-		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTextWelcome());
+		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 		extentTest.log(LogStatus.PASS, "Customer berhasil login");
 	}
 	
