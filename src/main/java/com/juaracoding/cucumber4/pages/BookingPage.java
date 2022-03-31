@@ -1,5 +1,6 @@
 package com.juaracoding.cucumber4.pages;
 
+
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -31,4 +32,35 @@ public class BookingPage {
 			return driver.getTitle();
 		}
 
+
+	public class LoginPage {
+		
+		private WebDriver driver;
+		
+		public LoginPage() {
+			this.driver = DriverSingleton.getDriver();
+			PageFactory.initElements(driver, this);
+		}
+		@FindBy(name = "email")
+		WebElement inputEmail;
+		
+		@FindBy(name = "password")
+		WebElement inputPassword;
+		
+		@FindBy(css = "#fadein > div.container > div > div.modal-content.col.align-self-center > div.modal-body > div > form > div.btn-box.pt-3.pb-4 > button")
+		WebElement btnSubmit;
+
+		@FindBy(className = "author_meta")
+		WebElement txtWelcome;
+		
+		public void submitLogin(String email, String password) {
+			inputEmail.sendKeys(email);
+			inputPassword.sendKeys(password);
+			btnSubmit.click();
+		}
+		
+		public String getTextWelcome() {
+			return txtWelcome.getText();
+		}
+	}
 }
