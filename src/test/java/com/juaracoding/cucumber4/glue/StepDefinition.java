@@ -21,7 +21,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -48,6 +50,15 @@ public class StepDefinition {
 		TestCases[] tests = TestCases.values();
 		extentTest = reports.startTest(tests[Utils.testCount].getTestName());
 		Utils.testCount++;
+	}
+	
+	@AfterStep
+	public void  getResult(Scenario  scenario) {
+		if(scenario.isFailed()) {
+			String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ", "_"));
+			extentTest.log(LogStatus.FAIL, "Screenshot:/n"+
+					extentTest.addScreenCapture(screenshotPath));
+		}
 	}
 	
 	@After
